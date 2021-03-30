@@ -1,23 +1,12 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
+  "cli": { "defaultCollection": "@nrwl/react" },
   "defaultProject": "web",
   "generators": {
     "@nrwl/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
+      "application": { "style": "css", "linter": "eslint", "babel": true },
+      "component": { "style": "css" },
+      "library": { "style": "css", "linter": "eslint" }
     }
   },
   "projects": {
@@ -67,20 +56,14 @@
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "web:build"
-          },
+          "options": { "buildTarget": "web:build" },
           "configurations": {
-            "production": {
-              "buildTarget": "web:build:production"
-            }
+            "production": { "buildTarget": "web:build:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"]
-          }
+          "options": { "lintFilePatterns": ["apps/web/**/*.{ts,tsx,js,jsx}"] }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -89,6 +72,25 @@
             "jestConfig": "apps/web/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "storybook": {
+          "executor": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/react",
+            "port": 4400,
+            "config": { "configFolder": "apps/web/.storybook" }
+          },
+          "configurations": { "ci": { "quiet": true } }
+        },
+        "build-storybook": {
+          "executor": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/react",
+            "outputPath": "dist/storybook/web",
+            "config": { "configFolder": "apps/web/.storybook" }
+          },
+          "configurations": { "ci": { "quiet": true } }
         }
       }
     },
@@ -105,16 +107,12 @@
             "devServerTarget": "web:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "web:serve:production"
-            }
+            "production": { "devServerTarget": "web:serve:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/web-e2e/**/*.{js,ts}"]
-          }
+          "options": { "lintFilePatterns": ["apps/web-e2e/**/*.{js,ts}"] }
         }
       }
     }
